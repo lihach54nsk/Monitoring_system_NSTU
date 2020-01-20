@@ -8,7 +8,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload. I'm trying to make CI/CD.
+          Edit <code>src/App.js</code> and save to reload. I'm trying to make CI/CD. I made it.
+          Now I'm trying to fix the bug with this.
         </p>
         <a
           className="App-link"
