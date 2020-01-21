@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Chart from './Chart'
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
         >
         Show charts
         </a>
+
       </header>
+      <div>
+        <Chart />
+      </div>
     </div>
   );
 }
