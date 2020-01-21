@@ -22,7 +22,7 @@ class App extends Component{
                 datasets:[
                     {
                         label:'Idiotism',
-                        data:[1,2,3,4,5,6],
+                        data:[1,2,3,4,3,1],
                         backgroundColor:[
                             'rgba(255,99,132,0.6)',
                             'rgba(225,77,62,0.6)',
