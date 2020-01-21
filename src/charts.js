@@ -1,7 +1,7 @@
-import * as CanvasJSReact from 'canvasjs/dist/canvasjs';
+//import * as CanvasJSReact from 'canvasjs/dist/canvasjs';
 var React = require('react');
 var Component = React.Component;
-//var CanvasJSReact = require('./canvasjs');
+var CanvasJSReact = require('canvasjs/dist/canvasjs');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -27,7 +27,7 @@ class Charts extends Component {
             }]
         }
         return (
-            <div>
+            <div className="Charts">
                 <CanvasJSChart options = {options}
                                onRef={ref => this.chart = ref}
                 />
@@ -54,4 +54,5 @@ class Charts extends Component {
     }
 }
 
-export default Charts;
+//export default Charts;
+module.exports = Charts;
