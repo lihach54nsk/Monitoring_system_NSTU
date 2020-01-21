@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-var Charts = require('./charts.js');
 
 function App() {
   return (
@@ -12,16 +11,8 @@ function App() {
           Edit <code>src/App.js</code> and save to reload. Now I'm trying to fix the bug with this.
         </p>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
             className="App-link"
-            href="charts.js"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
         >
