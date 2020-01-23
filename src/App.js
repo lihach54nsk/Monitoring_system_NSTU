@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Chart from './Chart'
+import JSON from './Json'
 
 class App extends Component{
     constructor(){
@@ -56,7 +57,10 @@ class App extends Component{
 
                 </header>
                 <div>
-                    <Chart chartData={this.state.chartData}/>
+                    <Chart chartData = {this.state.chartData}/>
+                </div>
+                <div>
+                    <JSON />
                 </div>
             </div>
         );
