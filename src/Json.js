@@ -1,5 +1,7 @@
 import React from "react";
 
+//let dataChart = '2';
+
 class JSON extends React.Component {
     constructor(props) {
         super(props);
@@ -11,8 +13,7 @@ class JSON extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2", {
-        })
+        fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
             .then(res => res.json())
             .then(
                 result => {
@@ -42,7 +43,7 @@ class JSON extends React.Component {
                 <ul>
                     {items.map(item => (
                         <li key = {item.id}>
-                            {item.id} {item.device} {item.deviceId} {item.batteryLevel} {item.pushTheLimit} {item.uptime} {item.temperature} {item.lowLimit} {item.highLimit}
+                            {item.uptime} {item.temperature}
                         </li>
                     ))}
                 </ul>
@@ -52,3 +53,5 @@ class JSON extends React.Component {
 }
 
 export default JSON;
+export let dataChart = JSON.items;
+export let chisla = [1,2,3,4,5,6,67];
