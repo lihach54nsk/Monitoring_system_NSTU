@@ -1,6 +1,6 @@
 import React from "react";
 
-//let dataChart = '2';
+var keys = '';
 
 class JSON extends React.Component {
     constructor(props) {
@@ -32,8 +32,14 @@ class JSON extends React.Component {
             )
     }
 
+    getData(){
+        return keys;
+    }
+
     render() {
         const {error, isLoaded, items} = this.state;
+        keys = items;
+        //console.log(Object.keys(items));
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -53,5 +59,5 @@ class JSON extends React.Component {
 }
 
 export default JSON;
-export let dataChart = JSON.items;
+export const dataChartTemperature = Object.keys(keys);
 export let chisla = [1,2,3,4,5,6,67];

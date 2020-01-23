@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Chart from './Chart'
-import JSON, {dataChart, chisla} from './Json'
+import JSON, {dataChartTemperature, chisla} from './Json'
 
 class App extends Component{
     constructor(){
@@ -17,13 +17,14 @@ class App extends Component{
     }
 
     getChartData(){ // make data for chart
+        console.log(dataChartTemperature);
         this.setState({
             chartData:{
-                labels:[1,2,3,4,5,6],
+                labels:dataChartTemperature.map(item => item.uptime),
                 datasets:[
                     {
                         label:'Temperature',
-                        data:dataChart,
+                        data:dataChartTemperature.map(item => (item.temperature)),
                         backgroundColor:[
                             'rgba(255,99,132,0.6)',
                             'rgba(225,77,62,0.6)',
