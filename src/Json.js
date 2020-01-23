@@ -11,14 +11,15 @@ class JSON extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://evening-ravine-56495.herokuapp.com/api/v001/temperature/VegaTempDeviceDatas/all/2")
+        fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2", {
+        })
             .then(res => res.json())
             .then(
-                (result) => {
+                result => {
                     this.setState(
                         {
                             isLoaded: true,
-                            items: result.items
+                            items: result
                         });
                 },
                 (error) => {
@@ -32,7 +33,7 @@ class JSON extends React.Component {
 
     render() {
         const {error, isLoaded, items} = this.state;
-        if(error) {
+        if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
@@ -40,7 +41,7 @@ class JSON extends React.Component {
             return (
                 <ul>
                     {items.map(item => (
-                        <li key={item.id}>
+                        <li key = {item.id}>
                             {item.id} {item.device} {item.deviceId} {item.batteryLevel} {item.pushTheLimit} {item.uptime} {item.temperature} {item.lowLimit} {item.highLimit}
                         </li>
                     ))}
