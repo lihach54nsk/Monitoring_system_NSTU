@@ -41,7 +41,7 @@ class LineChart extends React.Component {
             data: {
                 labels: this.props.T_time,
                 datasets: [{
-                    label: 'Temperature',
+                    label: this.props.title,
                     data: this.props.temperature,
                     fill: 'none',
                     backgroundColor: this.props.color,

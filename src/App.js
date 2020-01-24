@@ -4,41 +4,38 @@ import LineChart from "./LineChart";
 import './App.css';
 //import JSON from './Json'
 
+function GetTemperature(result) {
+    let data = [];
+    for (let i = 0; i < result.length; i++) {
+        data.push({
+            T_time: new Date(result[i].uptime),
+            temperature: result[i].temperature
+        });
+    }
+    return data;
+}
+
 function GetData(){
     let data = [];
-    let T_time = [];
-    let temperature = [];
-    let result_data = [];
-    fetch("/api/v001/temperature/VegaTempDeviceDatas/current")
+    //let T_time = [];
+    //let temperature = [];
+    fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
         .then(res => res.json())
         .then(
             result => {
-                for(let i = 0; i < result.length; i++) {
-                    data.push({
-                        T_time: result[i].uptime,
-                        temperature: result[i].temperature
-                    })
-                }
-                //console.log('result array');
-                //console.log(data);
-                for(let i = 0; i < data.length; i++) {
+                data.push({
+                    title: 'Temperature',
+                    data: GetTemperature(result)
+                });
+                console.log('result array');
+                console.log(data);
+                /*for(let i = 0; i < data.length; i++) {
                     T_time.push(data[i].T_time);
                     temperature.push(data[i].temperature);
-                }
+                }*/
             }
         );
-    //console.log('result time array');
-    result_data.push(T_time);
-    //console.log(result_data[0]);
-
-    //console.log('result temperature array');
-    result_data.push(temperature);
-    //console.log(result_data[1]);
-
-    console.log('RESULTING ARRAY');
-    console.log(result_data);
-
-    return result_data;
+    return data;
 }
 
 class App extends Component{
@@ -61,7 +58,11 @@ class App extends Component{
         return (
             <div className="App">
                 <div>
-                    <LineChart />
+                    <LineChart
+                        data = {this.state.data.data}
+                        title = {this.state.data.title}
+                        color ="#3E517A"
+                    />
                 </div>
             </div>
         );
