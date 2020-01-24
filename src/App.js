@@ -17,8 +17,6 @@ function GetTemperature(result) {
 
 function GetData(){
     let data = [];
-    //let T_time = [];
-    //let temperature = [];
     fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
         .then(res => res.json())
         .then(
@@ -29,18 +27,14 @@ function GetData(){
                 });
                 console.log('result array');
                 console.log(data);
-                /*for(let i = 0; i < data.length; i++) {
-                    T_time.push(data[i].T_time);
-                    temperature.push(data[i].temperature);
-                }*/
             }
         );
     return data;
 }
 
-class App extends Component{
-    constructor(){
-        super();
+class App extends Component {
+    constructor(props){
+        super(props);
         this.state = {
             data: GetData()
         };
@@ -59,8 +53,8 @@ class App extends Component{
             <div className="App">
                 <div>
                     <LineChart
-                        data = {this.state.data.data}
-                        title = {this.state.data.title}
+                        data = {this.state.data[0].data}
+                        title = {this.state.data[0].title}
                         color ="#3E517A"
                     />
                 </div>

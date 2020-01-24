@@ -1,6 +1,6 @@
 import React from "react";
 //import * as Chart from "react-chartjs-2";
-import Chart from 'chart.js'
+import Chart from 'chart.js';
 Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
 
 class LineChart extends React.Component {
@@ -10,8 +10,8 @@ class LineChart extends React.Component {
     }
 
     componentDidUpdate() {
-        this.myChart.data.labels = this.props.T_time;
-        this.myChart.data.datasets[0].data = this.props.temperature;
+        this.myChart.data.labels = this.props.data.map(d => d.T_time);
+        this.myChart.data.datasets[0].data = this.props.data.map(d => d.temperature);
         this.myChart.update();
     }
 
@@ -39,10 +39,10 @@ class LineChart extends React.Component {
                 }
             },
             data: {
-                labels: this.props.T_time,
+                labels: this.props.data.map(d => d.T_time),
                 datasets: [{
                     label: this.props.title,
-                    data: this.props.temperature,
+                    data: this.props.data.map(d => d.temperature),
                     fill: 'none',
                     backgroundColor: this.props.color,
                     pointRadius: 2,
