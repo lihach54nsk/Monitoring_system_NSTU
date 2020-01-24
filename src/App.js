@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import LineChart from "./LineChart";
 //import logo from './logo.svg';
 import './App.css';
-//import Chart from './Chart'
 //import JSON from './Json'
 
 function GetData(){
@@ -10,19 +9,18 @@ function GetData(){
     let T_time = [];
     let temperature = [];
     let result_data = [];
-    fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+    fetch("/api/v001/temperature/VegaTempDeviceDatas/current")
         .then(res => res.json())
         .then(
             result => {
-                //console.log(Object.keys(result))
                 for(let i = 0; i < result.length; i++) {
                     data.push({
                         T_time: result[i].uptime,
                         temperature: result[i].temperature
                     })
                 }
-                console.log('result array');
-                console.log(data);
+                //console.log('result array');
+                //console.log(data);
                 for(let i = 0; i < data.length; i++) {
                     T_time.push(data[i].T_time);
                     temperature.push(data[i].temperature);
@@ -56,7 +54,7 @@ class App extends Component{
                 this.setState({
                     data: GetData()
                 })
-            }, 500000)
+            }, 5000)
     }
 
     render() {
