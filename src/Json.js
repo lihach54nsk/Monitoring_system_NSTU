@@ -1,6 +1,5 @@
 import React from "react";
-
-var keys = '';
+import Chart from './Chart'
 
 class JSON extends React.Component {
     constructor(props) {
@@ -32,32 +31,37 @@ class JSON extends React.Component {
             )
     }
 
-    getData(){
-        return keys;
-    }
+    /*componentDidMount() {
+        const {items} = this.state;
+        console.log(Object.keys(items));
+        this.getChartData(items);
+    }*/
 
     render() {
         const {error, isLoaded, items} = this.state;
-        keys = items;
-        //console.log(Object.keys(items));
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
+            //GetData()
             return (
-                <ul>
-                    {items.map(item => (
-                        <li key = {item.id}>
-                            {item.uptime} {item.temperature}
-                        </li>
-                    ))}
-                </ul>
+                <div>
+                    <div>
+                        <Chart chartData = {this.props.chartData}/>
+                    </div>
+                    <ul>
+                        {items.map(item => (
+                            <li key = {item.id}>
+                                {item.uptime} {item.temperature}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             );
         }
     }
 }
 
 export default JSON;
-export const dataChartTemperature = Object.keys(keys);
-export let chisla = [1,2,3,4,5,6,67];
+//export let chisla = [1,2,3,4,5,6,67];

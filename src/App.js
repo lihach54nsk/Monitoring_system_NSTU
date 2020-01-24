@@ -1,66 +1,69 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import LineChart from "./LineChart";
+//import logo from './logo.svg';
 import './App.css';
-import Chart from './Chart'
-import JSON, {dataChartTemperature, chisla} from './Json'
+//import Chart from './Chart'
+//import JSON from './Json'
+
+function GetData(){
+    let data = [];
+    let T_time = [];
+    let temperature = [];
+    let result_data = [];
+    fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+        .then(res => res.json())
+        .then(
+            result => {
+                //console.log(Object.keys(result))
+                for(let i = 0; i < result.length; i++) {
+                    data.push({
+                        T_time: result[i].uptime,
+                        temperature: result[i].temperature
+                    })
+                }
+                console.log('result array');
+                console.log(data);
+                for(let i = 0; i < data.length; i++) {
+                    T_time.push(data[i].T_time);
+                    temperature.push(data[i].temperature);
+                }
+            }
+        );
+    //console.log('result time array');
+    result_data.push(T_time);
+    //console.log(result_data[0]);
+
+    //console.log('result temperature array');
+    result_data.push(temperature);
+    //console.log(result_data[1]);
+
+    console.log('RESULTING ARRAY');
+    console.log(result_data);
+
+    return result_data;
+}
 
 class App extends Component{
     constructor(){
         super();
         this.state = {
-            chartData:{}
-        }
+            data: GetData()
+        };
     }
 
-    componentWillMount() {
-        this.getChartData();
-    }
-
-    getChartData(){ // make data for chart
-        console.log(dataChartTemperature);
-        this.setState({
-            chartData:{
-                labels:dataChartTemperature.map(item => item.uptime),
-                datasets:[
-                    {
-                        label:'Temperature',
-                        data:dataChartTemperature.map(item => (item.temperature)),
-                        backgroundColor:[
-                            'rgba(255,99,132,0.6)',
-                            'rgba(225,77,62,0.6)',
-                            'rgba(255,99,132,0.6)',
-                            'rgba(105,19,2,0.6)',
-                            'rgba(1,1,1,0.6)',
-                            'rgba(255,109,132,0.6)'
-                        ]
-                    }
-                ]
-            }
-        });
+    componentDidMount() {
+            window.setInterval(() => {
+                this.setState({
+                    data: GetData()
+                })
+            }, 500000)
     }
 
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload. Now I'm trying to fix the bug with this.
-                    </p>
-                    <a
-                        className="App-link"
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Show charts
-                    </a>
-                </header>
                 <div>
-                    <Chart chartData = {this.state.chartData}/>
-                </div>
-                <div>
-                    <JSON />
+                    <LineChart />
                 </div>
             </div>
         );
