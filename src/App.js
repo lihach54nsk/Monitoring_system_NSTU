@@ -65,6 +65,7 @@ class App extends Component {
             <div className="App">
                 <div>
                     <LineChart
+                        source = "/api/v001/temperature/VegaTempDeviceDatas/all/2"
                         title = 'Temperature'
                         color ="#3E517A"
                     />
