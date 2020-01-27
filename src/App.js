@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LineChart from "./LineChart";
+import axios from 'axios';
 //import logo from './logo.svg';
 import './App.css';
 //import JSON from './Json'
@@ -17,7 +18,19 @@ function GetTemperature(result) {
 
 function GetData(){
     let data = [];
-    fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+    axios.get("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+        .then(result => {
+                data.push({
+                    title: 'Temperature',
+                    data: GetTemperature(result.data)
+                });
+                //console.log('got json');
+                //console.log(result);
+                console.log('result array');
+                console.log(data);
+            }
+        );
+    /*fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
         .then(res => res.json())
         .then(
             result => {
@@ -28,7 +41,7 @@ function GetData(){
                 console.log('result array');
                 console.log(data);
             }
-        );
+        );*/
     return data;
 }
 
@@ -53,9 +66,9 @@ class App extends Component {
             <div className="App">
                 <div>
                     <LineChart
-                        data = {this.state.data[0].data}
-                        title = {this.state.data[0].title}
+                        title = {this.state.data.title}
                         color ="#3E517A"
+                        data = {this.state.data.data}
                     />
                 </div>
             </div>

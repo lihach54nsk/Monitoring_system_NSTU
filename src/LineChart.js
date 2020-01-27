@@ -39,10 +39,10 @@ class LineChart extends React.Component {
                 }
             },
             data: {
-                labels: this.props.data.map(d => d.T_time),
+                labels: this.props.data,
                 datasets: [{
                     label: this.props.title,
-                    data: this.props.data.map(d => d.temperature),
+                    data: this.props.data,
                     fill: 'none',
                     backgroundColor: this.props.color,
                     pointRadius: 2,
