@@ -16,9 +16,9 @@ function GetTemperature(result) {
     return data;
 }
 
-function GetData(){
+async function GetData(){
     let data = [];
-    axios.get("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+    /*await axios.get("/api/v001/temperature/VegaTempDeviceDatas/all/2")
         .then(result => {
                 data.push({
                     title: 'Temperature',
@@ -29,8 +29,8 @@ function GetData(){
                 console.log('result array');
                 console.log(data);
             }
-        );
-    /*fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
+        );*/
+    await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2")
         .then(res => res.json())
         .then(
             result => {
@@ -41,7 +41,7 @@ function GetData(){
                 console.log('result array');
                 console.log(data);
             }
-        );*/
+        );
     return data;
 }
 
@@ -49,16 +49,38 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: GetData()
+            data: []
         };
     }
 
-    componentDidMount() {
-            window.setInterval(() => {
-                this.setState({
-                    data: GetData()
-                })
-            }, 5000)
+    async componentDidMount() {
+        let data = [];
+        const rep = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
+        const json = await rep.json();
+
+        data.push({
+            title: 'Temperature',
+            data: GetTemperature(json)
+        });
+
+        console.log('result array');
+        console.log(data);
+        this.setState({data: data});
+        /*.then(
+            result => {
+                data.push({
+                    title: 'Temperature',
+                    data: GetTemperature(result)
+                });
+                console.log('result array');
+                console.log(data);
+            }
+        );*/
+        window.setInterval(() => {
+            this.setState({
+                data: data
+            })
+        }, 5000)
     }
 
     render() {
@@ -66,14 +88,16 @@ class App extends Component {
             <div className="App">
                 <div>
                     <LineChart
-                        title = {this.state.data.title}
+                        //title = {this.state.data[0].title}
                         color ="#3E517A"
-                        data = {this.state.data.data}
+                        //data = {this.state.data.data}
                     />
                 </div>
             </div>
         );
     }
 }
+
+
 
 export default App;

@@ -9,49 +9,69 @@ class LineChart extends React.Component {
         this.canvasRef = React.createRef();
     }
 
-    componentDidUpdate() {
-        this.myChart.data.labels = this.props.data.map(d => d.T_time);
-        this.myChart.data.datasets[0].data = this.props.data.map(d => d.temperature);
-        this.myChart.update();
+    async componentDidUpdate() {
+        try {
+            const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
+            const json = await response.json();
+            console.log(json);
+            this.setState({data: json});
+
+            this.myChart.data.labels = json.map(d => d.uptime);
+            this.myChart.data.datasets[0].data = json.map(d => d.temperature);
+            this.myChart.update();
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
 
-    componentDidMount() {
-        this.myChart = new Chart(this.canvasRef.current, {
-            type: 'line',
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    xAxes: [
-                        {
-                            type: 'time',
-                            time: {
-                                unit: 'week'
+    async componentDidMount() {
+        try {
+            const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
+            const json = await response.json();
+            console.log(json);
+            this.setState({data: json});
+
+            this.myChart = new Chart(this.canvasRef.current, {
+                type: 'line',
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [
+                            {
+                                type: 'time',
+                                time: {
+                                    unit: 'week'
+                                }
                             }
-                        }
-                    ],
-                    yAxes: [
-                        {
-                            ticks: {
-                                min: 0
+                        ],
+                        yAxes: [
+                            {
+                                ticks: {
+                                    min: 0
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    }
+                },
+                data: {
+                    labels: json.map(d => d.uptime),
+                    datasets: [{
+                        label: 'this.props.title',
+                        data: json.map(d => d.temperature),
+                        fill: 'none',
+                        backgroundColor: this.props.color,
+                        pointRadius: 2,
+                        borderColor: this.props.color,
+                        borderWidth: 1,
+                        lineTension: 0
+                    }]
                 }
-            },
-            data: {
-                labels: this.props.data,
-                datasets: [{
-                    label: this.props.title,
-                    data: this.props.data,
-                    fill: 'none',
-                    backgroundColor: this.props.color,
-                    pointRadius: 2,
-                    borderColor: this.props.color,
-                    borderWidth: 1,
-                    lineTension: 0
-                }]
-            }
-        });
+            });
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
 
     render() {
