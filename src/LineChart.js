@@ -13,12 +13,12 @@ class LineChart extends React.Component {
         try {
             const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const json = await response.json();
-            console.log(json);
+            //console.log(json);
             this.setState({data: json});
-
             this.myChart.data.labels = json.map(d => d.uptime);
             this.myChart.data.datasets[0].data = json.map(d => d.temperature);
             this.myChart.update();
+            //console.log('updated');
         }
         catch (e) {
             console.log(e);
@@ -29,6 +29,7 @@ class LineChart extends React.Component {
         try {
             const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const json = await response.json();
+
             console.log(json);
             this.setState({data: json});
 
@@ -57,7 +58,7 @@ class LineChart extends React.Component {
                 data: {
                     labels: json.map(d => d.uptime),
                     datasets: [{
-                        label: 'this.props.title',
+                        label: this.props.title,
                         data: json.map(d => d.temperature),
                         fill: 'none',
                         backgroundColor: this.props.color,
