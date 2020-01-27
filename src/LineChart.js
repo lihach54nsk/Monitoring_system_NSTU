@@ -13,6 +13,9 @@ class LineChart extends React.Component {
         try {
             const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const json = await response.json();
+            json.sort(function (a,b) {
+                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
+            });
             //console.log(json);
             this.setState({data: json});
             this.myChart.data.labels = json.map(d => d.uptime);
@@ -29,7 +32,9 @@ class LineChart extends React.Component {
         try {
             const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const json = await response.json();
-
+            json.sort(function (a,b) {
+                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
+            });
             console.log(json);
             this.setState({data: json});
 
