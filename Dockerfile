@@ -1,8 +1,8 @@
 FROM node:10
 WORKDIR /app
 
-COPY package.json
-RUN npm run build
+COPY package*.json ./
+RUN npm run install
 
 COPY . .
 
