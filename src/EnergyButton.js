@@ -2,6 +2,16 @@ import React, {Component} from "react";
 import Button from "@material-ui/core/Button";
 import {Input} from "@material-ui/core";
 import {Tooltip} from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+const useStyles = makeStyles(theme => ({
+    energyDiv:{
+        display: 'flex',
+        flexWrap: 'wrap',
+        minWidth: 300,
+        width: '100%',
+    }
+}));
 
 // Material-UI framework
 class EnergyButton extends Component {
@@ -13,7 +23,7 @@ class EnergyButton extends Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
 
     }
 
@@ -33,10 +43,11 @@ class EnergyButton extends Component {
     }
 
     render() {
+        //const classes = useStyles();
         return (
-            <div>
+            <div >
                 <form>
-                    Текущий счёт за э/э: <Input value={this.state.value}></Input>
+                    Текущий счёт за э/э: <Input value = {this.state.value}></Input>
                     <Tooltip title="Обновить данные по э/э">
                         <Button onClick = {this.handleClick} variant = {this.props.variant} color = {this.props.color}>{this.props.text}</Button>
                     </Tooltip>

@@ -63,12 +63,12 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className = "App">
                 <div>
                     <LineChart
-                        source="/api/v001/temperature/VegaTempDeviceDatas/all/2"
-                        title='Temperature'
-                        color="#3E517A"
+                        source = "/api/v001/temperature/VegaTempDeviceDatas/all/2"
+                        title = 'Temperature'
+                        color = "#3E517A"
                     />
                 </div>
                 <EnergyButton variant="contained" color="primary" text="Refresh"/>
