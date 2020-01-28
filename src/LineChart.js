@@ -2,6 +2,7 @@ import React from "react";
 import Chart from 'chart.js';
 Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
 
+//Chart.js framework
 class LineChart extends React.Component {
     constructor(props) {
         super(props);

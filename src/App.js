@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LineChart from "./LineChart";
+import EnergyButton from "./EnergyButton";
 //import logo from './logo.svg';
 import './App.css';
 //import JSON from './Json'
@@ -45,7 +46,7 @@ import './App.css';
 }*/
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             data: []
@@ -65,11 +66,12 @@ class App extends Component {
             <div className="App">
                 <div>
                     <LineChart
-                        source = "/api/v001/temperature/VegaTempDeviceDatas/all/2"
-                        title = 'Temperature'
-                        color ="#3E517A"
+                        source="/api/v001/temperature/VegaTempDeviceDatas/all/2"
+                        title='Temperature'
+                        color="#3E517A"
                     />
                 </div>
+                <EnergyButton variant="contained" color="primary" text="Refresh"/>
             </div>
         );
     }
