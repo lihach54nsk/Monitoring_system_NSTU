@@ -19,7 +19,17 @@ class EnergyButton extends Component {
 
     async handleClick() {
         //alert('Clicked');
-        this.setState({value:this.state.value + 1});
+        try {
+            // запрашиваться будет напрямую через строку внутри класса, т.к. адрес апи нельзя палить
+            const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/current/3");
+            const json = await response.json();
+            //console.log(json);
+            //console.log(json.temperature);
+            this.setState({value: json.temperature});
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
 
     render() {
