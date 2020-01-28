@@ -3,6 +3,7 @@ import LineChart from "./LineChart";
 import EnergyButton from "./EnergyButton";
 //import logo from './logo.svg';
 import './App.css';
+import Dashboard from "./Dashboard";
 //import JSON from './Json'
 
 /*function GetTemperature(result) {
@@ -64,7 +65,14 @@ class App extends Component {
     render() {
         return (
             <div className = "App">
-                <div>
+                <Dashboard/>
+            </div>
+        );
+    }
+}
+
+/*
+<div>
                     <LineChart
                         source = "/api/v001/temperature/VegaTempDeviceDatas/all/2"
                         title = 'Temperature'
@@ -72,9 +80,5 @@ class App extends Component {
                     />
                 </div>
                 <EnergyButton variant="contained" color="primary" text="Refresh"/>
-            </div>
-        );
-    }
-}
-
+ */
 export default App;
