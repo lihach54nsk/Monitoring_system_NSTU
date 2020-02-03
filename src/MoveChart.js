@@ -27,7 +27,6 @@ class MoveChart extends React.Component {
 
     async componentDidMount() {
         try {
-            //const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const response = await fetch(this.props.source);
             const json = await response.json();
             console.log(json);

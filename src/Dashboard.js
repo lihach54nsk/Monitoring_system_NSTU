@@ -24,6 +24,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import LineChart from "./LineChart";
 import MoveChart from "./MoveChart";
+import CurrentData from "./CurrentData";
 
 const drawerWidth = 240;
 
@@ -165,7 +166,9 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
-                                <Deposits />
+                                <CurrentData
+                                    source = "/api/v001/temperature/VegaTempDeviceDatas/current/2"
+                                />
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={9}>
@@ -179,7 +182,9 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
-                                <Deposits />
+                                <CurrentData
+                                    source = "/api/v001/temperature/VegaTempDeviceDatas/current/3"
+                                />
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={9}>

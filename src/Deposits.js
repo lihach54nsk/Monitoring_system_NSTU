@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
 
-function preventDefault(event) {
+/*function preventDefault(event) { // может когда-нибудь понадобится
     event.preventDefault();
-}
+}*/
 
 const useStyles = makeStyles({
     depositContext: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Deposits() {
+export default function Deposits(temperature) {
     const classes = useStyles();
     return (
         <React.Fragment>
