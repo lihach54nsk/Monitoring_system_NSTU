@@ -23,6 +23,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import LineChart from "./LineChart";
+import MoveChart from "./MoveChart";
 
 const drawerWidth = 240;
 
@@ -159,7 +160,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/2"
+                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/2?limit=10"
                                     title = 'Temperature'
                                     color = "#3E517A"
                                 />
@@ -168,8 +169,17 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/3"
+                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/3?limit=10"
                                     title = 'Temperature'
+                                    color = "#3E517A"
+                                />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <MoveChart
+                                    source = "/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
+                                    title = 'Moving'
                                     color = "#3E517A"
                                 />
                             </Paper>

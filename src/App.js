@@ -59,7 +59,7 @@ class App extends Component {
             this.setState({
                 data: []
             })
-        }, 5000)
+        }, 10000)
     }
 
     render() {

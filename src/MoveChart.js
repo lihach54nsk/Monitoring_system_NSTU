@@ -3,7 +3,7 @@ import Chart from 'chart.js';
 Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
 
 //Chart.js framework
-class LineChart extends React.Component {
+class MoveChart extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
@@ -11,16 +11,12 @@ class LineChart extends React.Component {
 
     async componentDidUpdate() {
         try {
-            //const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const response = await fetch(this.props.source);
             const json = await response.json();
-            /*json.sort(function (a, b) {
-                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
-            });*/
             //console.log(json);
             this.setState({data: json});
             this.myChart.data.labels = json.map(d => d.uptime);
-            this.myChart.data.datasets[0].data = json.map(d => d.temperature);
+            this.myChart.data.datasets[0].data = json.map(d => d.reason);
             this.myChart.update();
             //console.log('updated');
         }
@@ -34,9 +30,6 @@ class LineChart extends React.Component {
             //const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const response = await fetch(this.props.source);
             const json = await response.json();
-            /*json.sort(function (a, b) {
-                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
-            });*/
             console.log(json);
             this.setState({data: json});
 
@@ -66,7 +59,7 @@ class LineChart extends React.Component {
                     labels: json.map(d => d.uptime),
                     datasets: [{
                         label: this.props.title,
-                        data: json.map(d => d.temperature),
+                        data: json.map(d => d.reason),
                         fill: 'none',
                         backgroundColor: this.props.color,
                         pointRadius: 2,
@@ -87,4 +80,4 @@ class LineChart extends React.Component {
     }
 }
 
-export default LineChart;
+export default MoveChart;
