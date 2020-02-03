@@ -11,13 +11,8 @@ class LineChart extends React.Component {
 
     async componentDidUpdate() {
         try {
-            //const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const response = await fetch(this.props.source);
             const json = await response.json();
-            /*json.sort(function (a, b) {
-                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
-            });*/
-            //console.log(json);
             this.setState({data: json});
             this.myChart.data.labels = json.map(d => d.uptime);
             this.myChart.data.datasets[0].data = json.map(d => d.temperature);
@@ -31,12 +26,8 @@ class LineChart extends React.Component {
 
     async componentDidMount() {
         try {
-            //const response = await fetch("/api/v001/temperature/VegaTempDeviceDatas/all/2");
             const response = await fetch(this.props.source);
             const json = await response.json();
-            /*json.sort(function (a, b) {
-                return new Date(a.uptime).getTime() - new Date(b.uptime).getTime();
-            });*/
             console.log(json);
             this.setState({data: json});
 

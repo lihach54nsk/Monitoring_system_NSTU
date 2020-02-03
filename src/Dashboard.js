@@ -132,7 +132,7 @@ export default function Dashboard() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Панель информации
+                        Информационная панель
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -148,9 +148,6 @@ export default function Dashboard() {
                         <ChevronLeftIcon/>
                     </IconButton>
                 </div>
-                <Divider/>
-                <List>{mainListItems}</List>
-                <Divider/>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
@@ -166,6 +163,11 @@ export default function Dashboard() {
                                 />
                             </Paper>
                         </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <Deposits />
+                            </Paper>
+                        </Grid>
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
@@ -173,6 +175,11 @@ export default function Dashboard() {
                                     title = 'Temperature'
                                     color = "#3E517A"
                                 />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <Deposits />
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={9}>
