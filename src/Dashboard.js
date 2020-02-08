@@ -168,6 +168,9 @@ export default function Dashboard() {
                             <Paper className={fixedHeightPaper}>
                                 <CurrentData
                                     source = "/api/v001/temperature/VegaTempDeviceDatas/current/2"
+                                    title = "Текущая температура"
+                                    ending = "°C"
+                                    divider = "1"
                                 />
                             </Paper>
                         </Grid>
@@ -184,6 +187,9 @@ export default function Dashboard() {
                             <Paper className={fixedHeightPaper}>
                                 <CurrentData
                                     source = "/api/v001/temperature/VegaTempDeviceDatas/current/3"
+                                    title = "Текущая температура"
+                                    ending = "°C"
+                                    divider = "1"
                                 />
                             </Paper>
                         </Grid>
@@ -193,6 +199,25 @@ export default function Dashboard() {
                                     source = "/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
                                     title = 'Moving'
                                     color = "#3E517A"
+                                />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <MoveChart
+                                    source = "/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
+                                    title = 'Moving'
+                                    color = "#3E517A"
+                                />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <CurrentData
+                                    source = "/api/v001/temperature/VegaTempDeviceDatas/current/3"
+                                    title = "Текущее значение"
+                                    ending = "кВт*ч"
+                                    divider = "3200"
                                 />
                             </Paper>
                         </Grid>

@@ -30,9 +30,9 @@ class CurrentData extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Title>Текущая температура</Title>
+                <Title>{this.props.title}</Title>
                 <Typography component="p" variant="h3">
-                    {this.current}
+                    {this.current/this.props.divider} {this.props.ending}
                 </Typography>
             </React.Fragment>
         )
