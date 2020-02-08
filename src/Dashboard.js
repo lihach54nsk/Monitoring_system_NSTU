@@ -25,6 +25,7 @@ import Orders from './Orders';
 import LineChart from "./LineChart";
 import MoveChart from "./MoveChart";
 import CurrentData from "./CurrentData";
+import EnergyChart from "./EnergyChart";
 
 const drawerWidth = 240;
 
@@ -159,7 +160,7 @@ export default function Dashboard() {
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
                                     source = "/api/v001/temperature/VegaTempDeviceDatas/all/2?limit=10"
-                                    title = 'Temperature'
+                                    title = 'Temperature, °C'
                                     color = "#3E517A"
                                 />
                             </Paper>
@@ -178,7 +179,7 @@ export default function Dashboard() {
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
                                     source = "/api/v001/temperature/VegaTempDeviceDatas/all/3?limit=10"
-                                    title = 'Temperature'
+                                    title = 'Temperature, °C'
                                     color = "#3E517A"
                                 />
                             </Paper>
@@ -204,9 +205,9 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
-                                <MoveChart
-                                    source = "/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
-                                    title = 'Moving'
+                                <EnergyChart
+                                    source = "/api/v001/impuls/VegaImpulsDeviceData/all/delta/8?days=3"
+                                    title = 'Energy, кВт*ч'
                                     color = "#3E517A"
                                 />
                             </Paper>
