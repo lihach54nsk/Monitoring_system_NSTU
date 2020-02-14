@@ -157,7 +157,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/2?limit=10"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/temperature/VegaTempDeviceDatas/all/2?limit=10"
                                     title = 'Temperature, °C'
                                     color = "#3E517A"
                                 />
@@ -166,7 +166,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
                                 <CurrentData
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/current/2"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/temperature/VegaTempDeviceDatas/current/2"
                                     title = "Текущая температура"
                                     ending = "°C"
                                     tip = "1"
@@ -176,7 +176,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <LineChart
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/all/3?limit=10"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/temperature/VegaTempDeviceDatas/all/3?limit=10"
                                     title = 'Temperature, °C'
                                     color = "#3E517A"
                                 />
@@ -185,7 +185,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
                                 <CurrentData
-                                    source = "/api/v001/temperature/VegaTempDeviceDatas/current/3"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/temperature/VegaTempDeviceDatas/current/3"
                                     title = "Текущая температура"
                                     ending = "°C"
                                     tip = "1"
@@ -195,7 +195,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <EnergyChart
-                                    source = "/api/v001/impuls/VegaImpulsDeviceData/all/delta/8?days=3"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/impuls/VegaImpulsDeviceData/all/delta/8?days=3"
                                     title = 'Energy, кВт*ч'
                                     color = "#3E517A"
                                 />
@@ -204,7 +204,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
                                 <CurrentData
-                                    source = "/api/v001/impuls/VegaImpulsDeviceData/current/8"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/impuls/VegaImpulsDeviceData/current/8"
                                     title = "Текущее значение"
                                     ending = "кВт*ч"
                                     tip = "2"
@@ -214,7 +214,7 @@ export default function Dashboard() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <MoveChart
-                                    source = "/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
+                                    source = "https://evening-ravine-56495.herokuapp.com/api/v001/moving/VegaMoveDeviceData/all/7?limit=10"
                                     title = 'Moving'
                                     color = "#3E517A"
                                 />
