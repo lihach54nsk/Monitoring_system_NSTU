@@ -22,7 +22,7 @@ module.exports = {
     mode: 'development',
     entry:
         {
-            main: './index.html'
+            main: './index.js'
         },
     output: {
         filename: '[name].[contenthash].js',
