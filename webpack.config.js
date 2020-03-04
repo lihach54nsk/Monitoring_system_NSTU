@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
@@ -18,12 +19,9 @@ const babelOptions = preset => {
 };
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    //context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry:
-        {
-            main: './index.js'
-        },
+    entry: './src/index.js',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
