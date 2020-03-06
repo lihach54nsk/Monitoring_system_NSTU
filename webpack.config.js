@@ -3,6 +3,23 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsWebpack = require('optimize-css-assets-webpack-plugin');
+
+const optimization = () => {
+    const config = {};
+
+    if (!isDev) {
+        config.minimizer = [
+            new OptimizeCssAssetsWebpack(),
+            new TerserWebpackPlugin()
+        ]
+    }
+    return config;
+};
+
+const isDev = process.env.NODE_ENV === 'development';
+console.log('IS DEV:',isDev);
 
 const babelOptions = preset => {
     const opts = {
@@ -24,7 +41,7 @@ module.exports = {
     //context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry:
-        {main:['@babel/polyfill', './src/index.js']},
+        {main: ['@babel/polyfill', './src/index.js']},
     output: {
         filename: '[hash].js',
         path: path.resolve(__dirname, 'dist')
@@ -36,7 +53,16 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev,
+                            reloadAll: true
+                        }
+                    },
+                    'css-loader'
+                ]
             },
             {
                 test: /\.(png|ico)$/,
@@ -61,9 +87,13 @@ module.exports = {
             }
         }
     },
+    optimization: optimization(),
     plugins: [
         new HtmlWebPackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            minify: {
+                collapseWhitespace: !isDev
+            }
         }),
         new CleanWebpackPlugin(),
         new CopyWebPackPlugin([
