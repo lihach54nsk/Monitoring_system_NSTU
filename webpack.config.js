@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyWebPackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const babelOptions = preset => {
     const opts = {
@@ -23,7 +25,7 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
-        filename: '[name].[contenthash].js',
+        filename: '[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
     resolve: {
@@ -33,7 +35,11 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.(png|ico)$/,
+                use: ['file-loader']
             },
             {
                 test: /\.js$/,
@@ -49,6 +55,23 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: './src/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new CopyWebPackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/assets/logo192.png'),
+                to: path.resolve(__dirname, 'dist')
+            },
+            {
+                from: path.resolve(__dirname, 'src/assets/manifest.json'),
+                to: path.resolve(__dirname, 'dist')
+            },
+            {
+                from: path.resolve(__dirname, 'src/assets/favicon.ico'),
+                to: path.resolve(__dirname, 'dist')
+            }
+        ]),
+        new MiniCssExtractPlugin({
+            filename: '[hash].css'
+        })
     ]
 };
