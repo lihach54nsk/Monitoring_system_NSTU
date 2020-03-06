@@ -28,7 +28,6 @@
     "eject": "react-scripts eject",
     "deploy": "serve -s build"
   },
-  "proxy": "https://evening-ravine-56495.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },

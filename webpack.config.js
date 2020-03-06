@@ -52,6 +52,15 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'https://evening-ravine-56495.herokuapp.com',
+                secure: false,
+                changeOrigin: true
+            }
+        }
+    },
     plugins: [
         new HtmlWebPackPlugin({
             template: './src/index.html'
