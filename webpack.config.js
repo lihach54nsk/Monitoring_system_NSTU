@@ -18,6 +18,19 @@ const optimization = () => {
     return config;
 };
 
+const prox = () => {
+    if (isDev) {
+        return {
+            '/api': {
+                target: 'https://evening-ravine-56495.herokuapp.com',
+                secure: false,
+                changeOrigin: true
+            }
+        }
+    }
+    return {};
+};
+
 const isDev = process.env.NODE_ENV === 'development';
 console.log('IS DEV:',isDev);
 
@@ -79,13 +92,7 @@ module.exports = {
         ]
     },
     devServer: {
-        proxy: {
-            '/api': {
-                target: 'https://evening-ravine-56495.herokuapp.com',
-                secure: false,
-                changeOrigin: true
-            }
-        }
+        proxy: prox()
     },
     optimization: optimization(),
     plugins: [
