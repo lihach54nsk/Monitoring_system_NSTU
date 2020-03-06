@@ -23,7 +23,8 @@ const babelOptions = preset => {
 module.exports = {
     //context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './src/index.js',
+    entry:
+        {main:['@babel/polyfill', './src/index.js']},
     output: {
         filename: '[hash].js',
         path: path.resolve(__dirname, 'dist')
