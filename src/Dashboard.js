@@ -18,7 +18,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import { mainListItems, secondaryListItems, listItemsData } from './listItems';
 import Orders from './Orders';
 import LineChart from "./LineChart";
 import MoveChart from "./MoveChart";
@@ -148,6 +148,8 @@ export default function Dashboard() {
                         <ChevronLeftIcon/>
                     </IconButton>
                 </div>
+                <Divider/>
+                <List>{listItemsData}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
