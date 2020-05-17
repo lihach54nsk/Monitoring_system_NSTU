@@ -24,6 +24,7 @@ import LineChart from "./LineChart";
 import MoveChart from "./MoveChart";
 import CurrentData from "./CurrentData";
 import EnergyChart from "./EnergyChart";
+import AddNew from "./AddNew";
 
 const drawerWidth = 240;
 
@@ -134,6 +135,7 @@ export default function Dashboard() {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Информационная панель
                     </Typography>
+                    <AddNew/>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -225,6 +227,7 @@ export default function Dashboard() {
                     </Grid>
                 </Container>
             </main>
+
         </div>
     );
 }
