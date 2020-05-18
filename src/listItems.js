@@ -16,13 +16,13 @@ function getDevices(i) {
     for (;i < data.length; i++) {
         switch (data[i]) {
             case 0:
-                return <ListItem button><ListItemText primary={"Unknown" + " device"}/></ListItem>;
+                return (<ListItem button><ListItemText primary={"Unknown" + " device"}/></ListItem>);
             case 1:
-                return <ListItem button><ListItemText primary={"Temperature" + " device"}/></ListItem>;
+                return (<ListItem button><ListItemText primary={"Temperature" + " device"}/></ListItem>);
             case 2:
-                return <ListItem button><ListItemText primary={"Move" + " device"}/></ListItem>;
+                return (<ListItem button><ListItemText primary={"Move" + " device"}/></ListItem>);
             case 3:
-                return <ListItem button><ListItemText primary={"Impuls" + " device"}/></ListItem>;
+                return (<ListItem button><ListItemText primary={"Impuls" + " device"}/></ListItem>);
             default:
                 break;
         }

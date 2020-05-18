@@ -56,7 +56,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Device name"
-                        defaultValue="def"
+                        defaultValue="Temperature 1"
                         type="text"
                         fullWidth
                     />
@@ -65,7 +65,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Device Identifier (DevEUI)"
-                        defaultValue="def"
+                        defaultValue="303036345C386E10"
                         type="text"
                         fullWidth
                     />
@@ -88,7 +88,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Application identifier (AppEUI) - OTAA"
-                        defaultValue="def"
+                        defaultValue="7665676174643131"
                         type="text"
                         fullWidth
                     />
@@ -97,7 +97,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Application key (AppKey) - OTAA"
-                        defaultValue="def"
+                        defaultValue="1A356010000000001A3860103D501354"
                         type="text"
                         fullWidth
                     />
@@ -106,7 +106,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Device Address (DevAddr) - ABP"
-                        defaultValue="def"
+                        defaultValue="0056082A"
                         type="text"
                         fullWidth
                     />
@@ -115,7 +115,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Application session key (AppSKey) - ABP"
-                        defaultValue="def"
+                        defaultValue="2B002700303036343138471061687D44"
                         type="text"
                         fullWidth
                     />
@@ -124,7 +124,7 @@ export default function AddNew() {
                         margin="dense"
                         id="name"
                         label="Network session key (NwkSKey) - ABP"
-                        defaultValue="def"
+                        defaultValue="31384710303036342B0027005C386E10"
                         type="text"
                         fullWidth
                     />
