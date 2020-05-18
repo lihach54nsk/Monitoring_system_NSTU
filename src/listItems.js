@@ -9,20 +9,46 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {Switch} from "@material-ui/core";
 
 function getDevices(i) {
     const data = [1, 1, 2, 3];
-    for (;i < data.length; i++) {
+    if (data.length === 0) {
+        return (<ListItem button>
+            <ListItemText primary={"No devices"}/>
+        </ListItem>);
+    }
+    for (; i < data.length; i++) {
         switch (data[i]) {
             case 0:
-                return (<ListItem button><ListItemText primary={"Unknown" + " device"}/></ListItem>);
+                return (<ListItem button>
+                    <ListItemIcon>
+                        <DeleteIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary={"Unknown" + " device"}/>
+                </ListItem>);
             case 1:
-                return (<ListItem button><ListItemText primary={"Temperature" + " device"}/></ListItem>);
+                return (<ListItem button>
+                    <ListItemIcon>
+                        <DeleteIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary={"Temperature" + " device"}/>
+                </ListItem>);
             case 2:
-                return (<ListItem button><ListItemText primary={"Move" + " device"}/></ListItem>);
+                return (<ListItem button>
+                    <ListItemIcon>
+                        <DeleteIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary={"Move" + " device"}/>
+                </ListItem>);
             case 3:
-                return (<ListItem button><ListItemText primary={"Impuls" + " device"}/></ListItem>);
+                return (<ListItem button>
+                    <ListItemIcon>
+                        <DeleteIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary={"Impuls" + " device"}/>
+                </ListItem>);
             default:
                 break;
         }
